@@ -22,6 +22,8 @@ const Search = ({restaurants = [],
             
           };
 
+          
+
            
 
         return (
