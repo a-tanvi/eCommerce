@@ -38,14 +38,13 @@ const App = () => {
       };
       setRestaurantLists(data);
       setRestaurants(data);
-
-      setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
-  if (loading) return <Shimmer />;
   return (
     <BrowserRouter>
       <Header
@@ -55,7 +54,10 @@ const App = () => {
         restaurantLists={restaurantLists}
       />
       <Routes>
-        <Route path="/" element={<Body restaurants={restaurants} />} />
+        {loading && <Route path="*" element={<Shimmer />} />}
+        {!loading && (
+          <Route path="/" element={<Body restaurants={restaurants} />} />
+        )}
         <Route path="/about" element={<About />} />
         <Route path="/restaurant/:id" element={<RestaurantMenu />} />
         <Route path="*" element={<Error />} />

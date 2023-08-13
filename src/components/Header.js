@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "./Search";
-import { LOGO } from "../../config";
+import { LOGO } from "../../config.js";
 import { Link } from "react-router-dom";
 const Title = () => (
   <Link to="/">
