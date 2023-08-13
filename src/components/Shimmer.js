@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const ShimmerCard = () => {
   return <div className="shimmer-effect"></div>;
@@ -11,7 +13,13 @@ const Shimmer = () => {
     </div>
   ));
 
-  return <div className='shimmer-container'>{shimmerCards}</div>;
+  return (
+    <>
+      <Header />
+      <div className="shimmer-container">{shimmerCards}</div>;
+      <Footer />
+    </>
+  );
 };
 
 export default Shimmer;
