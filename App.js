@@ -5,65 +5,42 @@ import Header from "./src/components/Header";
 import Body from "./src/components/Body";
 import Footer from "./src/components/Footer";
 import Shimmer from "./src/components/Shimmer";
-import { API_URL } from "./config";
 import About from "./src/components/About";
 import Error from "./src/components/Error";
 import RestaurantMenu from "./src/components/RestaurantMenu";
+import useRestaurantData from "./utils/useRestaurantData";
+import useOnline from "./utils/useOnline";
 
 const App = () => {
-  const [restaurantLists, setRestaurantLists] = useState([]); // all data
-  const [restaurants, setRestaurants] = useState([]); // filtered data
-  const [loading, setLoading] = useState(true);
+  const { restaurantLists, restaurants, loading, setRestaurants } =
+    useRestaurantData();
 
-  useEffect(() => {
-    getAllRestaurants();
-  }, []);
+  const isOnline = useOnline();
 
-  async function getAllRestaurants() {
-    setLoading(true);
-    try {
-      const temp = await fetch(API_URL);
-      const jsonData = await temp.json();
-
-      const data = () => {
-        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-          let checkData =
-            jsonData?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants;
-
-          if (checkData !== undefined) {
-            return checkData;
-          }
-        }
-      };
-      setRestaurantLists(data);
-      setRestaurants(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  {
+    !isOnline && <h1>Connect to internet</h1>;
   }
-
   return (
-    <BrowserRouter>
-      <Header
-        showSearch={true}
-        restaurants={restaurants}
-        setRestaurants={setRestaurants}
-        restaurantLists={restaurantLists}
-      />
-      <Routes>
-        {loading && <Route path="*" element={<Shimmer />} />}
-        {!loading && (
-          <Route path="/" element={<Body restaurants={restaurants} />} />
-        )}
-        <Route path="/about" element={<About />} />
-        <Route path="/restaurant/:id" element={<RestaurantMenu />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Header
+          showSearch={true}
+          restaurants={restaurants}
+          setRestaurants={setRestaurants}
+          restaurantLists={restaurantLists}
+        />
+        <Routes>
+          {loading && <Route path="*" element={<Shimmer />} />}
+          {!loading && (
+            <Route path="/" element={<Body restaurants={restaurants} />} />
+          )}
+          <Route path="/about" element={<About />} />
+          <Route path="/restaurant/:id" element={<RestaurantMenu />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 };
 

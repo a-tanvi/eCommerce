@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../components/Button";
+import { filterData } from "../../utils/helper";
 
 const Search = ({
   restaurants = [],
@@ -12,13 +13,10 @@ const Search = ({
   };
 
   const clickHandler = () => {
-    const filteredRestaurants = restaurantLists.filter(({ info }) =>
-      info?.name?.toLowerCase().includes(value.toLowerCase())
-    );
-
+    const filteredRestaurants = filterData(value, restaurantLists);
     setRestaurants(filteredRestaurants);
 
-    console.log({ restaurantLists, filteredRestaurants });
+    console.log(filteredRestaurants);
   };
 
   return (

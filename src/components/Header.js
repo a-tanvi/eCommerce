@@ -26,7 +26,7 @@ const Header = ({
 
     <ul id="navList">
       <li>Home</li>
-      <Link href="/about">
+      <Link to="/about">
         <li>About</li>
       </Link>
       <li>Contact</li>

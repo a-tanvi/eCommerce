@@ -3,7 +3,6 @@ import ResturantCard from "./ResturantCard";
 import EmptyPage from "./EmptyPage";
 
 const Body = ({ restaurants = [] }) => {
-  console.log(restaurants);
   if (restaurants.length === 0) {
     return <EmptyPage />;
   }

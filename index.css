@@ -127,6 +127,111 @@ h5 {
   color: #666;
 }
 
+.menu {
+  padding: 20px;
+  min-height: 84vh;
+}
+
+.restaurant-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.restaurant-name {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.restaurant-logo {
+  max-width: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+.cost-for-two {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 65vw;
+  margin: auto;
+}
+
+.menu-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.menu-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.card-image {
+  display: flex;
+  margin-left: auto;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+}
+
+.item-details {
+  padding: 16px;
+  flex-grow: 1;
+}
+
+.item-details h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.item-details h5 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.item-details p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.cart-button {
+  background-color: #f05c2b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: auto;
+  margin-right: -8px;
+}
+
+.cart-button:hover {
+  background-color: #d95121;
+}
+
+.image-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 8px;
+}
+
 .footer {
   display: flex;
   justify-content: center;
